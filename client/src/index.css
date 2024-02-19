@@ -5,6 +5,14 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+  }
+}
+
+
 html {
   font-family: "Inter", sans-serif;
 }

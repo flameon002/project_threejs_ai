@@ -6,14 +6,12 @@ import { Decal, useGLTF, useTexture } from "@react-three/drei";
 
 import state from "../store";
 
-const Shirt = () => {
+const Shirt2 = () => {
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/shirt_baked.glb");
 
   const logoTexture = useTexture(snap.logoDecal);
   const fullTexture = useTexture(snap.fullDecal);
-  const positionY = snap.positionY;
-  const positionX = snap.positionX;
 
   useFrame((state, delta) =>
     easing.dampC(materials.lambert1.color, snap.color, 0.25, delta)
@@ -32,7 +30,8 @@ const Shirt = () => {
         material-roughness={1}
         dispose={null}
         
-        position={[0.75, 0, 0]}
+        rotation={[0, 9.35, 0]}
+        position={[1.35, 0, 0]}
       >
         {snap.isFullTexture && (
           <Decal
@@ -45,7 +44,7 @@ const Shirt = () => {
 
         {snap.isLogoTexture && (
           <Decal
-            position={[0, positionX, positionY]}
+            position={[0, 0.04, 0.15]}
             rotation={[0, 0, 0]}
             scale={0.15}
             map={logoTexture}
@@ -59,4 +58,4 @@ const Shirt = () => {
   );
 };
 
-export default Shirt;
+export default Shirt2;
